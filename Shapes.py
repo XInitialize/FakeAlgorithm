@@ -196,13 +196,14 @@ class Rectangle_Grid2D:
 def Calculate_I_U(rect1: Rectangle_Grid2D, rect2: Rectangle_Grid2D):
     # TODO: broadcast to other dimention
     if _recall_instance(rect1, rect2, Rectangle_Grid2D):
-        IoU = 0
+        Intersection = 0
         dx, dy = CalculatePointDelta(rect1.CenterPoint, rect2.CenterPoint)
         Ew, Eh = (rect1.Width + rect2.Width), (rect1.Height + rect2.Height)
+        Union = 4 * rect1.Width * rect2.Width + 4 * rect1.Height * rect2.Height
         if (Ew - 2*dx) > 0 and (Eh - 2*dy) > 0:
             Intersection = (Ew-2 * dx) * (Eh-2 * dy)
-            Union = 4 * rect1.Width * rect2.Width + 4 * rect1.Height * rect2.Height - Intersection
-            return Intersection, Union
+            Union = Union - Intersection
+        return Intersection, Union
     else:
         raise TypeError(
             f"Wrong type to calculate, Use 'Rectangle_Grid2D' instead.")
