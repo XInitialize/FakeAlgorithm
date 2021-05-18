@@ -218,13 +218,9 @@ def Calculate_I_U(rect1: Rectangle_Grid2D, rect2: Rectangle_Grid2D):
         Ew, Eh = (rect1.Width + rect2.Width), (rect1.Height + rect2.Height)
         Union = rect1.Area + rect2.Area
         Intersection = max(0, min(rect1.P2.X, rect2.P2.X) -max(rect1.P1.X, rect2.P1.X)) * max(0,min(rect1.P2.Y, rect2.P2.Y) -max(rect1.P1.Y, rect2.P1.Y))
-        print(Intersection)
         Union = Union - Intersection
-        print(Union)
         return Intersection, Union
     else:
         raise TypeError(
             f"Wrong type to calculate, Use 'Rectangle_Grid2D' instead.")
-
-
 
