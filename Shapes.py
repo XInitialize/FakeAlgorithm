@@ -214,8 +214,6 @@ def Calculate_I_U(rect1: Rectangle_Grid2D, rect2: Rectangle_Grid2D):
     # TODO: broadcast to other dimention
     if _recall_instance(rect1, rect2, Rectangle_Grid2D):
         Intersection = 0
-        dx, dy = CalculatePointDelta(rect1.CenterPoint, rect2.CenterPoint)
-        Ew, Eh = (rect1.Width + rect2.Width), (rect1.Height + rect2.Height)
         Union = rect1.Area + rect2.Area
         Intersection = max(0, min(rect1.P2.X, rect2.P2.X) -max(rect1.P1.X, rect2.P1.X)) * max(0,min(rect1.P2.Y, rect2.P2.Y) -max(rect1.P1.Y, rect2.P1.Y))
         Union = Union - Intersection
